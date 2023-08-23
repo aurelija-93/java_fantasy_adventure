@@ -3,7 +3,6 @@ package rooms;
 import enemies.Enemy;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Room {
     private ArrayList<Enemy> enemies;
@@ -20,5 +19,21 @@ public class Room {
 
     public ArrayList<String> getTreasure() {
         return treasure;
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        enemies.remove(enemy);
+    }
+
+    public void addTreasure(String item) {
+        treasure.add(item);
+    }
+
+    public void removeTreasure(String item) {
+        treasure.remove(item);
     }
 }
