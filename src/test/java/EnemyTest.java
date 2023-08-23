@@ -26,4 +26,27 @@ public class EnemyTest {
     public void hasXp() {
         assertEquals(50, enemy.getXp());
     }
+
+    @Test
+    public void canReduceHealth() {
+        enemy.reduceHealth(30);
+        assertEquals(70, enemy.getHealth());
+    }
+
+    @Test
+    public void canLevelUp() {
+        enemy.levelUp();
+        assertEquals(120, enemy.getHealth());
+        assertEquals(12, enemy.getDamage());
+        assertEquals(60, enemy.getXp());
+    }
+
+    @Test
+    public void levelUpRoundsCorrectly() {
+        enemy.levelUp();
+        enemy.levelUp();
+        assertEquals(144, enemy.getHealth());
+        assertEquals(14, enemy.getDamage());
+        assertEquals(72, enemy.getXp());
+    }
 }

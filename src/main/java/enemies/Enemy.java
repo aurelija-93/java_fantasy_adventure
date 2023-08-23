@@ -22,4 +22,14 @@ public class Enemy {
     public int getXp() {
         return xp;
     }
+
+    public void reduceHealth(long amount) {
+        health -= amount;
+    }
+
+    public void levelUp() {
+        health = health + (health / 5);
+        damage = damage + (damage / 5);
+        xp = xp + (xp / 5);
+    }
 }

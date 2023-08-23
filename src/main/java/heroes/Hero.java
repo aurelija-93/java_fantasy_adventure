@@ -44,7 +44,26 @@ public class Hero {
         return inventory;
     }
 
+    public void addXp(int points) {
+        xp += points;
+    }
+
+    public void addGold(long amount) {
+        gold += amount;
+    }
+
     public void addToInventory(String item) {
         inventory.add(item);
+    }
+
+    public void removeFromInventory(String item) {
+        inventory.remove(item);
+    }
+
+    public void levelUp() {
+        health = health + (health / 5);
+        damage = damage + (damage / 5);
+        xp = 0;
+        level += 1;
     }
 }

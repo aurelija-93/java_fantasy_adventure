@@ -47,8 +47,38 @@ public class HeroTest {
     }
 
     @Test
+    public void canAddGold() {
+        hero.addGold(50);
+        assertEquals(120, hero.getGold());
+    }
+
+    @Test
+    public void canAddXp() {
+        hero.addXp(10);
+        assertEquals(60, hero.getXp());
+    }
+
+    @Test
     public void canAddToInventory() {
         hero.addToInventory("Healing potion");
         assertEquals(1, hero.getInventory().size());
+    }
+
+    @Test
+    public void canRemoveFromInventory() {
+        hero.addToInventory("Healing potion");
+        hero.addToInventory("Sword");
+        hero.addToInventory("Diamond");
+        hero.removeFromInventory("Sword");
+        assertEquals(2, hero.getInventory().size());
+    }
+
+    @Test
+    public void canLevelUp() {
+        hero.levelUp();
+        assertEquals(120, hero.getHealth());
+        assertEquals(24, hero.getDamage());
+        assertEquals(0, hero.getXp());
+        assertEquals(2, hero.getLevel());
     }
 }
