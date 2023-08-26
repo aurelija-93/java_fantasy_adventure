@@ -2,6 +2,7 @@ package characterTests;
 
 import characters.heroes.Melee;
 import items.Item;
+import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 public class MeleeTest {
     private Melee melee;
     private Item item1;
-    private Item item2;
-    private Item item3;
 
     @Before
     public void before() {
@@ -49,6 +48,11 @@ public class MeleeTest {
     }
 
     @Test
+    public void startsWithFistAsWeapon() {
+        assertEquals("Fist", melee.getWeapon().getName());
+    }
+
+    @Test
     public void canAddGold() {
         melee.addGold(50);
         assertEquals(150, melee.getGold());
@@ -70,8 +74,8 @@ public class MeleeTest {
     @Test
     public void canRemoveFromInventory() {
         item1 = new Item("Healing potion");
-        item2 = new Item("Sword");
-        item3 = new Item("Diamond");
+        Item item2 = new Item("Sword");
+        Item item3 = new Item("Diamond");
         melee.addToInventory(item1);
         melee.addToInventory(item2);
         melee.addToInventory(item3);
@@ -92,5 +96,42 @@ public class MeleeTest {
     public void canReduceHealth() {
         melee.reduceHealth(20);
         assertEquals(80, melee.getHealth());
+    }
+
+    @Test
+    public void canChangeWeapon() {
+        Weapon weapon = new Weapon("Sword", 10);
+        melee.addToInventory(weapon);
+        melee.changeWeapon(weapon);
+        assertEquals("Sword", melee.getWeapon().getName());
+        assertEquals(10, melee.getWeapon().getDamage());
+    }
+
+    @Test
+    public void cannotEquipWeaponNotInInventory() {
+        Weapon weapon = new Weapon("Sword", 10);
+        melee.changeWeapon(weapon);
+        assertEquals("Fist", melee.getWeapon().getName());
+        assertEquals(2, melee.getWeapon().getDamage());
+    }
+
+    @Test
+    public void canUnequipWeapon() {
+        Weapon weapon = new Weapon("Sword", 10);
+        melee.addToInventory(weapon);
+        melee.changeWeapon(weapon);
+        melee.unequipWeapon();
+        assertEquals("Fist", melee.getWeapon().getName());
+        assertEquals(2, melee.getWeapon().getDamage());
+    }
+
+    @Test
+    public void cannotUnequipFist() {
+        Weapon weapon = new Weapon("Fist", 5);
+        melee.addToInventory(weapon);
+        melee.changeWeapon(weapon);
+        melee.unequipWeapon();
+        assertEquals("Fist", melee.getWeapon().getName());
+        assertEquals(5, melee.getWeapon().getDamage());
     }
 }
