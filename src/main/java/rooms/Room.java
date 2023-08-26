@@ -8,9 +8,9 @@ public class Room {
     private ArrayList<Enemy> enemies;
     private ArrayList<String> treasure;
 
-    public Room(ArrayList<Enemy> enemies, ArrayList<String> treasure) {
-        this.enemies = enemies;
-        this.treasure = treasure;
+    public Room() {
+        this.enemies = new ArrayList<>();
+        this.treasure = new ArrayList<>();
     }
 
     public ArrayList<Enemy> getEnemies() {

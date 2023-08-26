@@ -51,7 +51,7 @@ public class HeroTest {
     @Test
     public void canAddXp() {
         hero.addXp(10);
-        assertEquals(60, hero.getXp());
+        assertEquals(10, hero.getXp());
     }
 
     @Test

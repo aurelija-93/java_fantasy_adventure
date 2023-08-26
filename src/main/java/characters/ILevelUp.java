@@ -1,5 +1,5 @@
 package characters;
 
 public interface ILevelUp {
-    public void levelUp();
+    void levelUp();
 }
