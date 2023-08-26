@@ -16,7 +16,6 @@ public class Room {
         this.boss = boss;
         this.treasure = new ArrayList<>();
     }
-
     public ArrayList<Monster> getMonsters() {
         return monsters;
     }
@@ -36,6 +35,7 @@ public class Room {
     public void removeMonster(Monster enemy) {
         monsters.remove(enemy);
     }
+
     public void removeBoss() {
         boss = null;
     }
