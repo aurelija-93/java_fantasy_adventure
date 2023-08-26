@@ -2,6 +2,7 @@ package roomTests;
 
 import characters.enemies.Boss;
 import characters.enemies.Monster;
+import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
@@ -11,10 +12,9 @@ import static org.junit.Assert.assertNull;
 
 public class RoomTest {
     private Room room;
-    private Monster monster;
-    private Monster monster1;
-    private Monster monster2;
     private Boss boss;
+
+    private Item item1;
 
     @Before
     public void before() {
@@ -34,15 +34,15 @@ public class RoomTest {
 
     @Test
     public void canAddMonsters() {
-        monster = new Monster(100, 10, 50, 1);
+        Monster monster = new Monster(100, 10, 50, 1);
         room.addMonster(monster);
         assertEquals(1, room.getMonsters().size());
     }
 
     @Test
     public void canRemoveMonsters() {
-        monster1 = new Monster(100, 10, 50, 1);
-        monster2 = new Monster(200, 20, 100, 2);
+        Monster monster1 = new Monster(100, 10, 50, 1);
+        Monster monster2 = new Monster(200, 20, 100, 2);
         room.addMonster(monster1);
         room.addMonster(monster2);
         room.removeMonster(monster2);
@@ -57,16 +57,20 @@ public class RoomTest {
 
     @Test
     public void canAddTreasure() {
-        room.addTreasure("Healing potion");
+        item1 = new Item("Healing potion");
+        room.addTreasure(item1);
         assertEquals(1, room.getTreasure().size());
     }
 
     @Test
     public void canRemoveTreasure() {
-        room.addTreasure("Healing potion");
-        room.addTreasure("Sword");
-        room.addTreasure("Diamond");
-        room.removeTreasure("Sword");
+        item1 = new Item("Healing potion");
+        Item item2 = new Item("Sword");
+        Item item3 = new Item("Diamond");
+        room.addTreasure(item1);
+        room.addTreasure(item2);
+        room.addTreasure(item3);
+        room.removeTreasure(item2);
         assertEquals(2, room.getTreasure().size());
     }
 }

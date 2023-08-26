@@ -1,6 +1,7 @@
 package characterTests;
 
 import characters.enemies.Boss;
+import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +37,8 @@ public class BossTest {
 
     @Test
     public void canAddToLoot() {
-        boss.addToLoot("Helmet");
+        Item item = new Item("Helmet");
+        boss.addToLoot(item);
         assertEquals(1, boss.getLoot().size());
     }
 

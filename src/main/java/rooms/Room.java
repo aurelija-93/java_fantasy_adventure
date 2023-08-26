@@ -2,13 +2,14 @@ package rooms;
 
 import characters.enemies.Boss;
 import characters.enemies.Monster;
+import items.Item;
 
 import java.util.ArrayList;
 
 public class Room {
     private ArrayList<Monster> monsters;
     private Boss boss;
-    private ArrayList<String> treasure;
+    private ArrayList<Item> treasure;
 
     public Room(Boss boss) {
         this.monsters = new ArrayList<>();
@@ -24,7 +25,7 @@ public class Room {
         return boss;
     }
 
-    public ArrayList<String> getTreasure() {
+    public ArrayList<Item> getTreasure() {
         return treasure;
     }
 
@@ -39,11 +40,11 @@ public class Room {
         boss = null;
     }
 
-    public void addTreasure(String item) {
+    public void addTreasure(Item item) {
         treasure.add(item);
     }
 
-    public void removeTreasure(String item) {
+    public void removeTreasure(Item item) {
         treasure.remove(item);
     }
 }

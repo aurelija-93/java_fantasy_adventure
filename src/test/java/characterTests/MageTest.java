@@ -10,8 +10,6 @@ import static org.junit.Assert.assertEquals;
 public class MageTest {
     private Mage mage;
     private Item item1;
-    private Item item2;
-    private Item item3;
 
     @Before
     public void before() {
@@ -70,8 +68,8 @@ public class MageTest {
     @Test
     public void canRemoveFromInventory() {
         item1 = new Item("Healing potion");
-        item2 = new Item("Sword");
-        item3 = new Item("Diamond");
+        Item item2 = new Item("Sword");
+        Item item3 = new Item("Diamond");
         mage.addToInventory(item1);
         mage.addToInventory(item2);
         mage.addToInventory(item3);
