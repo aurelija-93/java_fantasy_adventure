@@ -29,6 +29,14 @@ public abstract class Character implements ILevelUp {
         return level;
     }
 
+    public void setHealth(long health) {
+        this.health = health;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public void setXp(int xp) {
         this.xp = xp;
     }

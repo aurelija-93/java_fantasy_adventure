@@ -3,8 +3,6 @@ package characters;
 import java.util.ArrayList;
 
 public class Hero extends Character {
-    private long health;
-    private int damage;
     private long gold;
     private ArrayList<String> inventory;
 
@@ -39,9 +37,14 @@ public class Hero extends Character {
     }
 
     public void levelUp() {
-        health = health + (health / 5);
-        damage = damage + (damage / 5);
+        long newHealth = getHealth() + (getHealth() / 5);
+        setHealth(newHealth);
+
+        int newDamage = getDamage() + (getDamage() / 5);
+        setDamage(newDamage);
+
         setXp(0);
+
         setLevel(getLevel() + 1);
     }
 }
