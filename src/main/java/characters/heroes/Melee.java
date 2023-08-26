@@ -7,7 +7,7 @@ import items.Weapon;
 
 import java.util.ArrayList;
 
-public class Melee extends Hero implements IDefend {
+public class Melee extends Hero {
     private Weapon weapon;
     private Armour armour;
 
@@ -52,7 +52,7 @@ public class Melee extends Hero implements IDefend {
     @Override
     public void defend(int damage) {
         if (armour == null) {
-            reduceHealth(damage);
+            setHealth(Math.max(getHealth() - damage, 0));
         } else {
             if (damage < armour.getArmourStrength()) {
                 armour.setArmourStrength(armour.getArmourStrength() - damage);
@@ -63,7 +63,7 @@ public class Melee extends Hero implements IDefend {
                 int remainingDamage = damage - armour.getArmourStrength();
                 unequipArmour();
                 removeFromInventory(armour);
-                reduceHealth(remainingDamage);
+                setHealth(Math.max(getHealth() - remainingDamage, 0));
             }
         }
     }

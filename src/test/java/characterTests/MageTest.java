@@ -96,14 +96,14 @@ public class MageTest {
     }
 
     @Test
-    public void canReduceHealth() {
-        mage.reduceHealth(20);
+    public void canDefend() {
+        mage.defend(20);
         assertEquals(80, mage.getHealth());
     }
 
     @Test
     public void cannotReduceHealthBelowZero() {
-        mage.reduceHealth(200);
+        mage.defend(200);
         assertEquals(0, mage.getHealth());
     }
 
@@ -131,14 +131,14 @@ public class MageTest {
 
     @Test
     public void canGetHealed() {
-        mage.reduceHealth(50);
+        mage.defend(50);
         mage.getHealed(30);
         assertEquals(80, mage.getHealth());
     }
 
     @Test
     public void cannotHealBeyondMaxHealth() {
-        mage.reduceHealth(50);
+        mage.defend(50);
         mage.getHealed(200);
         assertEquals(100, mage.getHealth());
     }

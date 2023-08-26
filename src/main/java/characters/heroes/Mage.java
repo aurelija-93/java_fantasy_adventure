@@ -1,11 +1,13 @@
 package characters.heroes;
 
+import characters.Character;
+import characters.IAttack;
 import items.CombatSpell;
 import items.Item;
 
 import java.util.ArrayList;
 
-public class Mage extends Hero {
+public class Mage extends Hero implements IAttack {
 
     private CombatSpell spell;
 
@@ -27,5 +29,12 @@ public class Mage extends Hero {
 
     public void unequipSpell() {
         spell = null;
+    }
+
+    @Override
+    public void attack(Character character) {
+//        if (spell != null) {
+//
+//        }
     }
 }

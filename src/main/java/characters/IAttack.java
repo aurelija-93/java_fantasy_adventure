@@ -1,5 +1,5 @@
 package characters;
 
 public interface IAttack {
-    int attack();
+    void attack(Character character);
 }

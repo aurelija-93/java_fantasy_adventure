@@ -99,13 +99,13 @@ public class HealerTest {
 
     @Test
     public void canReduceHealth() {
-        healer.reduceHealth(20);
+        healer.defend(20);
         assertEquals(80, healer.getHealth());
     }
 
     @Test
     public void cannotReduceHealthBelowZero() {
-        healer.reduceHealth(200);
+        healer.defend(200);
         assertEquals(0, healer.getHealth());
     }
 
@@ -133,14 +133,14 @@ public class HealerTest {
 
     @Test
     public void canGetHealed() {
-        healer.reduceHealth(50);
+        healer.defend(50);
         healer.getHealed(30);
         assertEquals(80, healer.getHealth());
     }
 
     @Test
     public void cannotHealBeyondMaxHealth() {
-        healer.reduceHealth(50);
+        healer.defend(50);
         healer.getHealed(200);
         assertEquals(100, healer.getHealth());
     }
@@ -148,7 +148,7 @@ public class HealerTest {
     @Test
     public void canHealHeroes() {
         Melee hero = new Melee(100, 10, 1);
-        hero.reduceHealth(50);
+        hero.defend(50);
         healer.addToInventory(spell);
         healer.changeSpell(spell);
         healer.heal(hero);
@@ -158,7 +158,7 @@ public class HealerTest {
     @Test
     public void cannotHealHeroesWithoutSpell() {
         Melee hero = new Melee(100, 10, 1);
-        hero.reduceHealth(50);
+        hero.defend(50);
         healer.heal(hero);
         assertEquals(50, hero.getHealth());
     }

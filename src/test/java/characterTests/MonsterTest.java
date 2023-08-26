@@ -30,8 +30,8 @@ public class MonsterTest {
     }
 
     @Test
-    public void canReduceHealth() {
-        monster.reduceHealth(30);
+    public void canDefend() {
+        monster.defend(30);
         assertEquals(70, monster.getHealth());
     }
 

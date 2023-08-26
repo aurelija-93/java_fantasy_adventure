@@ -105,14 +105,8 @@ public class MeleeTest {
     }
 
     @Test
-    public void canReduceHealth() {
-        melee.reduceHealth(20);
-        assertEquals(80, melee.getHealth());
-    }
-
-    @Test
     public void cannotReduceHealthBelowZero() {
-        melee.reduceHealth(200);
+        melee.defend(200);
         assertEquals(0, melee.getHealth());
     }
 
@@ -180,14 +174,14 @@ public class MeleeTest {
 
     @Test
     public void canGetHealed() {
-        melee.reduceHealth(50);
+        melee.defend(50);
         melee.getHealed(30);
         assertEquals(80, melee.getHealth());
     }
 
     @Test
     public void cannotHealBeyondMaxHealth() {
-        melee.reduceHealth(50);
+        melee.defend(50);
         melee.getHealed(200);
         assertEquals(100, melee.getHealth());
     }

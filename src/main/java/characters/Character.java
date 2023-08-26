@@ -1,6 +1,6 @@
 package characters;
 
-public abstract class Character implements ILevelUp {
+public abstract class Character implements ILevelUp, IDefend {
     private int health;
     private int damage;
     private int xp;
@@ -49,7 +49,7 @@ public abstract class Character implements ILevelUp {
         xp += points;
     }
 
-    public void reduceHealth(int amount) {
+    public void defend(int amount) {
         health = Math.max(health - amount, 0);
     }
 }

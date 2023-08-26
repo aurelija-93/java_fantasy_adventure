@@ -43,8 +43,8 @@ public class BossTest {
     }
 
     @Test
-    public void canReduceHealth() {
-        boss.reduceHealth(30);
+    public void canDefend() {
+        boss.defend(30);
         assertEquals(70, boss.getHealth());
     }
 
