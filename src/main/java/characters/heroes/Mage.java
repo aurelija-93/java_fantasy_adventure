@@ -35,8 +35,12 @@ public class Mage extends Hero implements IAttackEnemies {
 
     @Override
     public void attack(Enemy enemy) {
-//        if (spell != null) {
-//
-//        }
+        if (spell != null) {
+            enemy.defend(spell.getDamage());
+
+            if (enemy.getHealth() == 0) {
+                addXp(enemy.getXp());
+            }
+        }
     }
 }

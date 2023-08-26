@@ -1,8 +1,10 @@
 package characterTests;
 
+import characters.enemies.Monster;
 import characters.heroes.Mage;
 import items.CombatSpell;
 import items.Item;
+import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -141,5 +143,25 @@ public class MageTest {
         mage.defend(50);
         mage.getHealed(200);
         assertEquals(100, mage.getHealth());
+    }
+
+    @Test
+    public void canAttack() {
+        Monster enemy = new Monster(100, 10, 10, 1);
+        mage.addToInventory(spell);
+        mage.changeSpell(spell);
+        mage.attack(enemy);
+        assertEquals(80, enemy.getHealth());
+    }
+
+    @Test
+    public void canGetXpOnKill() {
+        Monster enemy = new Monster(100, 10, 10, 1);
+        CombatSpell spell = new CombatSpell("Earthquake", 100);
+        mage.addToInventory(spell);
+        mage.changeSpell(spell);
+        mage.attack(enemy);
+        assertEquals(0, enemy.getHealth());
+        assertEquals(10, mage.getXp());
     }
 }
