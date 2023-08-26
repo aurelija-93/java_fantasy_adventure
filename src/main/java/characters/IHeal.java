@@ -1,5 +1,7 @@
 package characters;
 
+import characters.heroes.Hero;
+
 public interface IHeal {
-    int heal();
+    void heal(Hero hero);
 }

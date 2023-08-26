@@ -1,11 +1,12 @@
 package characters.heroes;
 
+import characters.IHeal;
 import items.HealingSpell;
 import items.Item;
 
 import java.util.ArrayList;
 
-public class Healer extends Hero {
+public class Healer extends Hero implements IHeal {
 
     private HealingSpell spell;
 
@@ -27,5 +28,12 @@ public class Healer extends Hero {
 
     public void unequipSpell() {
         spell = null;
+    }
+
+    @Override
+    public void heal(Hero hero) {
+        if (spell != null) {
+            hero.getHealed(spell.getHealingPower());
+        }
     }
 }

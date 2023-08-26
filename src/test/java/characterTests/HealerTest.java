@@ -1,6 +1,8 @@
 package characterTests;
 
 import characters.heroes.Healer;
+import characters.heroes.Hero;
+import characters.heroes.Melee;
 import items.HealingSpell;
 import items.Item;
 import org.junit.Before;
@@ -142,5 +144,23 @@ public class HealerTest {
         healer.reduceHealth(50);
         healer.getHealed(200);
         assertEquals(100, healer.getHealth());
+    }
+
+    @Test
+    public void canHealHeroes() {
+        Melee hero = new Melee(100, 10, 1);
+        hero.reduceHealth(50);
+        healer.addToInventory(spell);
+        healer.changeSpell(spell);
+        healer.heal(hero);
+        assertEquals(75, hero.getHealth());
+    }
+
+    @Test
+    public void cannotHealHeroesWithoutSpell() {
+        Melee hero = new Melee(100, 10, 1);
+        hero.reduceHealth(50);
+        healer.heal(hero);
+        assertEquals(50, hero.getHealth());
     }
 }
