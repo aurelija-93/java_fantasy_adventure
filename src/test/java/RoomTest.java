@@ -1,19 +1,23 @@
+import characters.enemies.Boss;
 import characters.enemies.Monster;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class RoomTest {
     private Room room;
     private Monster monster;
     private Monster monster1;
     private Monster monster2;
+    private Boss boss;
 
     @Before
     public void before() {
-        room = new Room();
+        boss = new Boss(1000, 100, 500, 1);
+        room = new Room(boss);
     }
 
     @Test
@@ -41,6 +45,12 @@ public class RoomTest {
         room.addMonster(monster2);
         room.removeMonster(monster2);
         assertEquals(1, room.getMonsters().size());
+    }
+
+    @Test
+    public void canRemoveBoss() {
+        room.removeBoss();
+        assertNull(room.getBoss());
     }
 
     @Test
