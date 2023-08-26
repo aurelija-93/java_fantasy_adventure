@@ -1,6 +1,7 @@
 package characterTests;
 
 import characters.enemies.Boss;
+import characters.heroes.Mage;
 import items.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -65,5 +66,12 @@ public class BossTest {
         assertEquals(14, boss.getDamage());
         assertEquals(72, boss.getXp());
         assertEquals(3, boss.getLevel());
+    }
+
+    @Test
+    public void canAttack() {
+        Mage hero = new Mage(100, 10, 1);
+        boss.attack(hero);
+        assertEquals(90, hero.getHealth());
     }
 }

@@ -1,6 +1,7 @@
 package characterTests;
 
 import characters.enemies.Monster;
+import characters.heroes.Mage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,5 +53,12 @@ public class MonsterTest {
         assertEquals(14, monster.getDamage());
         assertEquals(72, monster.getXp());
         assertEquals(3, monster.getLevel());
+    }
+
+    @Test
+    public void canAttack() {
+        Mage hero = new Mage(100, 10, 1);
+        monster.attack(hero);
+        assertEquals(90, hero.getHealth());
     }
 }
