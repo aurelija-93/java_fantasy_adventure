@@ -1,12 +1,14 @@
 package characterTests;
 
 import characters.heroes.Melee;
+import items.Armour;
 import items.Item;
 import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class MeleeTest {
     private Melee melee;
@@ -55,6 +57,11 @@ public class MeleeTest {
     @Test
     public void maxHealthEqualsStartingHealth() {
         assertEquals(melee.getHealth(), melee.getMaxHealth());
+    }
+
+    @Test
+    public void startsWithNullArmour() {
+        assertNull(melee.getArmour());
     }
 
     @Test
@@ -144,6 +151,31 @@ public class MeleeTest {
         melee.unequipWeapon();
         assertEquals("Fist", melee.getWeapon().getName());
         assertEquals(5, melee.getWeapon().getDamage());
+    }
+
+    @Test
+    public void canChangeArmour() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.addToInventory(armour);
+        melee.changeArmour(armour);
+        assertEquals("Helmet", melee.getArmour().getName());
+        assertEquals(20, melee.getArmour().getArmourStrength());
+    }
+
+    @Test
+    public void cannotEquipArmourNotInInventory() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.changeArmour(armour);
+        assertNull(melee.getArmour());
+    }
+
+    @Test
+    public void canUnequipArmour() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.addToInventory(armour);
+        melee.changeArmour(armour);
+        melee.unequipArmour();
+        assertNull(melee.getArmour());
     }
 
     @Test

@@ -1,7 +1,6 @@
 package characterTests;
 
 import characters.heroes.Healer;
-import characters.heroes.Hero;
 import characters.heroes.Melee;
 import items.HealingSpell;
 import items.Item;
