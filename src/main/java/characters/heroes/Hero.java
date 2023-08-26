@@ -4,7 +4,7 @@ import characters.Character;
 
 import java.util.ArrayList;
 
-public class Hero extends Character {
+public abstract class Hero extends Character {
     private long gold;
     private ArrayList<String> inventory;
 
