@@ -1,21 +1,24 @@
 package characterTests;
 
 import characters.heroes.Healer;
+import items.HealingSpell;
 import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class HealerTest {
     private Healer healer;
     private Item item1;
-    private Item item2;
-    private Item item3;
+
+    private HealingSpell spell;
 
     @Before
     public void before() {
         healer = new Healer(100, 20, 1);
+        spell = new HealingSpell("Basic Heal", 25);
     }
 
     @Test
@@ -49,6 +52,11 @@ public class HealerTest {
     }
 
     @Test
+    public void startsWithNullSpell() {
+        assertNull(healer.getSpell());
+    }
+
+    @Test
     public void canAddGold() {
         healer.addGold(50);
         assertEquals(150, healer.getGold());
@@ -70,8 +78,8 @@ public class HealerTest {
     @Test
     public void canRemoveFromInventory() {
         item1 = new Item("Healing potion");
-        item2 = new Item("Sword");
-        item3 = new Item("Diamond");
+        Item item2 = new Item("Sword");
+        Item item3 = new Item("Diamond");
         healer.addToInventory(item1);
         healer.addToInventory(item2);
         healer.addToInventory(item3);
@@ -92,5 +100,27 @@ public class HealerTest {
     public void canReduceHealth() {
         healer.reduceHealth(20);
         assertEquals(80, healer.getHealth());
+    }
+
+    @Test
+    public void canChangeSpell() {
+        healer.addToInventory(spell);
+        healer.changeSpell(spell);
+        assertEquals("Basic Heal", healer.getSpell().getName());
+        assertEquals(25, healer.getSpell().getHealingPower());
+    }
+
+    @Test
+    public void cannotEquipSpellNotInInventory() {
+        healer.changeSpell(spell);
+        assertNull(healer.getSpell());
+    }
+
+    @Test
+    public void canUnequipSpell() {
+        healer.addToInventory(spell);
+        healer.changeSpell(spell);
+        healer.unequipSpell();
+        assertNull(healer.getSpell());
     }
 }

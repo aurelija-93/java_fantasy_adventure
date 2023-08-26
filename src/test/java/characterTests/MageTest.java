@@ -3,7 +3,6 @@ package characterTests;
 import characters.heroes.Mage;
 import items.DestructionSpell;
 import items.Item;
-import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Mage extends Hero {
 
     private DestructionSpell spell;
+
     public Mage(long health, int damage, int level) {
         super(health, damage, level);
         this.spell = null;
