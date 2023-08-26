@@ -191,4 +191,40 @@ public class MeleeTest {
         melee.getHealed(200);
         assertEquals(100, melee.getHealth());
     }
+
+    @Test
+    public void canDefendWithoutArmour() {
+        melee.defend(30);
+        assertEquals(70, melee.getHealth());
+    }
+
+    @Test
+    public void canDefendAgainstLowDamage() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.addToInventory(armour);
+        melee.changeArmour(armour);
+        melee.defend(10);
+        assertEquals(10, melee.getArmour().getArmourStrength());
+        assertEquals(100, melee.getHealth());
+    }
+
+    @Test
+    public void canDefendAgainstEqualDamage() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.addToInventory(armour);
+        melee.changeArmour(armour);
+        melee.defend(20);
+        assertNull(melee.getArmour());
+        assertEquals(100, melee.getHealth());
+    }
+
+    @Test
+    public void canDefendAgainstHighDamage() {
+        Armour armour = new Armour("Helmet", 20);
+        melee.addToInventory(armour);
+        melee.changeArmour(armour);
+        melee.defend(40);
+        assertNull(melee.getArmour());
+        assertEquals(80, melee.getHealth());
+    }
 }

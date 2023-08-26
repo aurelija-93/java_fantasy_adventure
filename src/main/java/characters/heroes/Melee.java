@@ -51,6 +51,20 @@ public class Melee extends Hero implements IDefend {
 
     @Override
     public void defend(int damage) {
-
+        if (armour == null) {
+            reduceHealth(damage);
+        } else {
+            if (damage < armour.getArmourStrength()) {
+                armour.setArmourStrength(armour.getArmourStrength() - damage);
+            } else if (damage == armour.getArmourStrength()) {
+                unequipArmour();
+                removeFromInventory(armour);
+            } else {
+                int remainingDamage = damage - armour.getArmourStrength();
+                unequipArmour();
+                removeFromInventory(armour);
+                reduceHealth(remainingDamage);
+            }
+        }
     }
 }
