@@ -1,4 +1,7 @@
+package characterTests;
+
 import characters.heroes.Melee;
+import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,6 +9,9 @@ import static org.junit.Assert.assertEquals;
 
 public class MeleeTest {
     private Melee melee;
+    private Item item1;
+    private Item item2;
+    private Item item3;
 
     @Before
     public void before() {
@@ -56,16 +62,20 @@ public class MeleeTest {
 
     @Test
     public void canAddToInventory() {
-        melee.addToInventory("Healing potion");
+        item1 = new Item("Healing potion");
+        melee.addToInventory(item1);
         assertEquals(1, melee.getInventory().size());
     }
 
     @Test
     public void canRemoveFromInventory() {
-        melee.addToInventory("Healing potion");
-        melee.addToInventory("Sword");
-        melee.addToInventory("Diamond");
-        melee.removeFromInventory("Sword");
+        item1 = new Item("Healing potion");
+        item2 = new Item("Sword");
+        item3 = new Item("Diamond");
+        melee.addToInventory(item1);
+        melee.addToInventory(item2);
+        melee.addToInventory(item3);
+        melee.removeFromInventory(item2);
         assertEquals(2, melee.getInventory().size());
     }
 

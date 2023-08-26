@@ -1,3 +1,5 @@
+package roomTests;
+
 import characters.enemies.Boss;
 import characters.enemies.Monster;
 import org.junit.Before;

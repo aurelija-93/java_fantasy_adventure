@@ -1,12 +1,13 @@
 package characters.heroes;
 
 import characters.Character;
+import items.Item;
 
 import java.util.ArrayList;
 
 public abstract class Hero extends Character {
     private long gold;
-    private ArrayList<String> inventory;
+    private ArrayList<Item> inventory;
 
     public Hero(
             long health,
@@ -22,7 +23,7 @@ public abstract class Hero extends Character {
         return gold;
     }
 
-    public ArrayList<String> getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
@@ -30,11 +31,11 @@ public abstract class Hero extends Character {
         gold += amount;
     }
 
-    public void addToInventory(String item) {
+    public void addToInventory(Item item) {
         inventory.add(item);
     }
 
-    public void removeFromInventory(String item) {
+    public void removeFromInventory(Item item) {
         inventory.remove(item);
     }
 

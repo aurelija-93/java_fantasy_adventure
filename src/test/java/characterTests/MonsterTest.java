@@ -1,3 +1,5 @@
+package characterTests;
+
 import characters.enemies.Monster;
 import org.junit.Before;
 import org.junit.Test;

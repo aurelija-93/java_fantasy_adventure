@@ -1,3 +1,5 @@
+package characterTests;
+
 import characters.enemies.Boss;
 import org.junit.Before;
 import org.junit.Test;

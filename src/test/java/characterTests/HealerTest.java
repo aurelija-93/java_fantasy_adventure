@@ -1,4 +1,7 @@
+package characterTests;
+
 import characters.heroes.Healer;
+import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,6 +9,9 @@ import static org.junit.Assert.assertEquals;
 
 public class HealerTest {
     private Healer healer;
+    private Item item1;
+    private Item item2;
+    private Item item3;
 
     @Before
     public void before() {
@@ -56,16 +62,20 @@ public class HealerTest {
 
     @Test
     public void canAddToInventory() {
-        healer.addToInventory("Healing potion");
+        item1 = new Item("Healing potion");
+        healer.addToInventory(item1);
         assertEquals(1, healer.getInventory().size());
     }
 
     @Test
     public void canRemoveFromInventory() {
-        healer.addToInventory("Healing potion");
-        healer.addToInventory("Sword");
-        healer.addToInventory("Diamond");
-        healer.removeFromInventory("Sword");
+        item1 = new Item("Healing potion");
+        item2 = new Item("Sword");
+        item3 = new Item("Diamond");
+        healer.addToInventory(item1);
+        healer.addToInventory(item2);
+        healer.addToInventory(item3);
+        healer.removeFromInventory(item2);
         assertEquals(2, healer.getInventory().size());
     }
 

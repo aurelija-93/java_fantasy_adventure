@@ -1,4 +1,7 @@
+package characterTests;
+
 import characters.heroes.Mage;
+import items.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,6 +9,9 @@ import static org.junit.Assert.assertEquals;
 
 public class MageTest {
     private Mage mage;
+    private Item item1;
+    private Item item2;
+    private Item item3;
 
     @Before
     public void before() {
@@ -56,16 +62,20 @@ public class MageTest {
 
     @Test
     public void canAddToInventory() {
-        mage.addToInventory("Healing potion");
+        item1 = new Item("Healing potion");
+        mage.addToInventory(item1);
         assertEquals(1, mage.getInventory().size());
     }
 
     @Test
     public void canRemoveFromInventory() {
-        mage.addToInventory("Healing potion");
-        mage.addToInventory("Sword");
-        mage.addToInventory("Diamond");
-        mage.removeFromInventory("Sword");
+        item1 = new Item("Healing potion");
+        item2 = new Item("Sword");
+        item3 = new Item("Diamond");
+        mage.addToInventory(item1);
+        mage.addToInventory(item2);
+        mage.addToInventory(item3);
+        mage.removeFromInventory(item2);
         assertEquals(2, mage.getInventory().size());
     }
 
