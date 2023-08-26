@@ -1,4 +1,6 @@
-package characters;
+package characters.heroes;
+
+import characters.Character;
 
 import java.util.ArrayList;
 

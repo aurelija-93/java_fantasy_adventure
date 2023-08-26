@@ -1,4 +1,4 @@
-import characters.Enemy;
+import characters.enemies.Monster;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 
 public class RoomTest {
     private Room room;
-    private Enemy enemy;
-    private Enemy enemy1;
-    private Enemy enemy2;
+    private Monster monster;
+    private Monster monster1;
+    private Monster monster2;
 
     @Before
     public void before() {
@@ -17,8 +17,8 @@ public class RoomTest {
     }
 
     @Test
-    public void startsWithNoEnemies() {
-        assertEquals(0, room.getEnemies().size());
+    public void startsWithNoMonsters() {
+        assertEquals(0, room.getMonsters().size());
     }
 
     @Test
@@ -27,20 +27,20 @@ public class RoomTest {
     }
 
     @Test
-    public void canAddEnemies() {
-        enemy = new Enemy(100, 10, 50, 1);
-        room.addEnemy(enemy);
-        assertEquals(1, room.getEnemies().size());
+    public void canAddMonsters() {
+        monster = new Monster(100, 10, 50, 1);
+        room.addMonster(monster);
+        assertEquals(1, room.getMonsters().size());
     }
 
     @Test
-    public void canRemoveEnemies() {
-        enemy1 = new Enemy(100, 10, 50, 1);
-        enemy2 = new Enemy(200, 20, 100, 2);
-        room.addEnemy(enemy1);
-        room.addEnemy(enemy2);
-        room.removeEnemy(enemy2);
-        assertEquals(1, room.getEnemies().size());
+    public void canRemoveMonsters() {
+        monster1 = new Monster(100, 10, 50, 1);
+        monster2 = new Monster(200, 20, 100, 2);
+        room.addMonster(monster1);
+        room.addMonster(monster2);
+        room.removeMonster(monster2);
+        assertEquals(1, room.getMonsters().size());
     }
 
     @Test

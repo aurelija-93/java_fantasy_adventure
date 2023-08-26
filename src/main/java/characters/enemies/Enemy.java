@@ -1,6 +1,8 @@
-package characters;
+package characters.enemies;
 
-public class Enemy extends Character{
+import characters.Character;
+
+public abstract class Enemy extends Character {
 
     public Enemy(long health, int damage, int xp, int level) {
         super(health, damage, xp, level);

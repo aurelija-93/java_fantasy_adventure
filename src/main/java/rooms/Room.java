@@ -1,32 +1,32 @@
 package rooms;
 
-import characters.Enemy;
+import characters.enemies.Monster;
 
 import java.util.ArrayList;
 
 public class Room {
-    private ArrayList<Enemy> enemies;
+    private ArrayList<Monster> monsters;
     private ArrayList<String> treasure;
 
     public Room() {
-        this.enemies = new ArrayList<>();
+        this.monsters = new ArrayList<>();
         this.treasure = new ArrayList<>();
     }
 
-    public ArrayList<Enemy> getEnemies() {
-        return enemies;
+    public ArrayList<Monster> getMonsters() {
+        return monsters;
     }
 
     public ArrayList<String> getTreasure() {
         return treasure;
     }
 
-    public void addEnemy(Enemy enemy) {
-        enemies.add(enemy);
+    public void addMonster(Monster enemy) {
+        monsters.add(enemy);
     }
 
-    public void removeEnemy(Enemy enemy) {
-        enemies.remove(enemy);
+    public void removeMonster(Monster enemy) {
+        monsters.remove(enemy);
     }
 
     public void addTreasure(String item) {

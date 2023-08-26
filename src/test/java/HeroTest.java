@@ -1,4 +1,4 @@
-import characters.Hero;
+import characters.heroes.Hero;
 import org.junit.Before;
 import org.junit.Test;
 
