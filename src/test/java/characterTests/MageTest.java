@@ -1,7 +1,7 @@
 package characterTests;
 
 import characters.heroes.Mage;
-import items.DestructionSpell;
+import items.CombatSpell;
 import items.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +12,12 @@ import static org.junit.Assert.assertNull;
 public class MageTest {
     private Mage mage;
     private Item item1;
-    private DestructionSpell spell;
+    private CombatSpell spell;
 
     @Before
     public void before() {
         mage = new Mage(100, 20, 1);
-        spell = new DestructionSpell("Fireball", 20);
+        spell = new CombatSpell("Fireball", 20);
     }
 
     @Test
