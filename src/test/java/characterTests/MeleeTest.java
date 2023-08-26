@@ -1,5 +1,6 @@
 package characterTests;
 
+import characters.enemies.Monster;
 import characters.heroes.Melee;
 import items.Armour;
 import items.Item;
@@ -220,5 +221,23 @@ public class MeleeTest {
         melee.defend(40);
         assertNull(melee.getArmour());
         assertEquals(80, melee.getHealth());
+    }
+
+    @Test
+    public void canAttack() {
+        Monster enemy = new Monster(100, 10, 10, 1);
+        melee.attack(enemy);
+        assertEquals(98, enemy.getHealth());
+    }
+
+    @Test
+    public void canGetXpOnKill() {
+        Monster enemy = new Monster(100, 10, 10, 1);
+        Weapon weapon = new Weapon("Sword", 100);
+        melee.addToInventory(weapon);
+        melee.changeWeapon(weapon);
+        melee.attack(enemy);
+        assertEquals(0, enemy.getHealth());
+        assertEquals(10, melee.getXp());
     }
 }

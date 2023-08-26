@@ -1,9 +1,10 @@
 package characters.enemies;
 
 import characters.Character;
-import characters.IAttack;
+import characters.IAttackHeroes;
+import characters.heroes.Hero;
 
-public abstract class Enemy extends Character implements IAttack {
+public abstract class Enemy extends Character implements IAttackHeroes {
 
     public Enemy(int health, int damage, int xp, int level) {
         super(health, damage, xp, level);
@@ -23,7 +24,7 @@ public abstract class Enemy extends Character implements IAttack {
     }
 
     @Override
-    public void attack(Character character) {
-        character.defend(getDamage());
+    public void attack(Hero hero) {
+        hero.defend(getDamage());
     }
 }

@@ -1,13 +1,16 @@
 package characters.heroes;
 
-import characters.IDefend;
+import characters.Character;
+import characters.IAttackEnemies;
+import characters.IAttackHeroes;
+import characters.enemies.Enemy;
 import items.Armour;
 import items.Item;
 import items.Weapon;
 
 import java.util.ArrayList;
 
-public class Melee extends Hero {
+public class Melee extends Hero implements IAttackEnemies {
     private Weapon weapon;
     private Armour armour;
 
@@ -65,6 +68,15 @@ public class Melee extends Hero {
                 removeFromInventory(armour);
                 setHealth(Math.max(getHealth() - remainingDamage, 0));
             }
+        }
+    }
+
+    @Override
+    public void attack(Enemy enemy) {
+        enemy.defend(weapon.getDamage());
+
+        if (enemy.getHealth() == 0) {
+            addXp(enemy.getXp());
         }
     }
 }

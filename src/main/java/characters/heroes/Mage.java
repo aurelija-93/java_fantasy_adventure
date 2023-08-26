@@ -1,13 +1,15 @@
 package characters.heroes;
 
 import characters.Character;
-import characters.IAttack;
+import characters.IAttackEnemies;
+import characters.IAttackHeroes;
+import characters.enemies.Enemy;
 import items.CombatSpell;
 import items.Item;
 
 import java.util.ArrayList;
 
-public class Mage extends Hero implements IAttack {
+public class Mage extends Hero implements IAttackEnemies {
 
     private CombatSpell spell;
 
@@ -32,7 +34,7 @@ public class Mage extends Hero implements IAttack {
     }
 
     @Override
-    public void attack(Character character) {
+    public void attack(Enemy enemy) {
 //        if (spell != null) {
 //
 //        }
