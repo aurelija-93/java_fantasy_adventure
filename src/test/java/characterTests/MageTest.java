@@ -1,19 +1,24 @@
 package characterTests;
 
 import characters.heroes.Mage;
+import items.DestructionSpell;
 import items.Item;
+import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class MageTest {
     private Mage mage;
     private Item item1;
+    private DestructionSpell spell;
 
     @Before
     public void before() {
         mage = new Mage(100, 20, 1);
+        spell = new DestructionSpell("Fireball", 20);
     }
 
     @Test
@@ -44,6 +49,11 @@ public class MageTest {
     @Test
     public void inventoryStartsEmpty() {
         assertEquals(0, mage.getInventory().size());
+    }
+
+    @Test
+    public void startsWithNullSpell() {
+        assertNull(mage.getSpell());
     }
 
     @Test
@@ -90,5 +100,27 @@ public class MageTest {
     public void canReduceHealth() {
         mage.reduceHealth(20);
         assertEquals(80, mage.getHealth());
+    }
+
+    @Test
+    public void canChangeSpell() {
+        mage.addToInventory(spell);
+        mage.changeSpell(spell);
+        assertEquals("Fireball", mage.getSpell().getName());
+        assertEquals(20, mage.getSpell().getDamage());
+    }
+
+    @Test
+    public void cannotEquipSpellNotInInventory() {
+        mage.changeSpell(spell);
+        assertNull(mage.getSpell());
+    }
+
+    @Test
+    public void canUnequipSpell() {
+        mage.addToInventory(spell);
+        mage.changeSpell(spell);
+        mage.unequipSpell();
+        assertNull(mage.getSpell());
     }
 }
