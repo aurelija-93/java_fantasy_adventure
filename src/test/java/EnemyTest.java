@@ -1,4 +1,4 @@
-import enemies.Enemy;
+import characters.Enemy;
 import org.junit.Before;
 import org.junit.Test;
 

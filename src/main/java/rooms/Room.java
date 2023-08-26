@@ -1,6 +1,6 @@
 package rooms;
 
-import enemies.Enemy;
+import characters.Enemy;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-import enemies.Enemy;
+import characters.Enemy;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
@@ -62,5 +62,11 @@ public class RoomTest {
         room.addTreasure("Diamond");
         room.removeTreasure("Sword");
         assertEquals(2, room.getTreasure().size());
+    }
+
+    @Test
+    public void canLevelUp() {
+        room.levelUp();
+        assertEquals();
     }
 }

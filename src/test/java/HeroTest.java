@@ -1,19 +1,15 @@
-import heroes.Hero;
+import characters.Hero;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
 public class HeroTest {
     private Hero hero;
-    private ArrayList<String> inventory;
 
     @Before
     public void before() {
-        inventory = new ArrayList<>();
-        hero = new Hero(100, 20, 50, 1, 70, inventory);
+        hero = new Hero(100, 20, 1);
     }
 
     @Test
@@ -27,8 +23,8 @@ public class HeroTest {
     }
 
     @Test
-    public void hasXp() {
-        assertEquals(50, hero.getXp());
+    public void startsWithNoXp() {
+        assertEquals(0, hero.getXp());
     }
 
     @Test
@@ -37,8 +33,8 @@ public class HeroTest {
     }
 
     @Test
-    public void hasGold() {
-        assertEquals(70, hero.getGold());
+    public void startsWith100Gold() {
+        assertEquals(100, hero.getGold());
     }
 
     @Test
@@ -49,7 +45,7 @@ public class HeroTest {
     @Test
     public void canAddGold() {
         hero.addGold(50);
-        assertEquals(120, hero.getGold());
+        assertEquals(150, hero.getGold());
     }
 
     @Test
@@ -80,5 +76,11 @@ public class HeroTest {
         assertEquals(24, hero.getDamage());
         assertEquals(0, hero.getXp());
         assertEquals(2, hero.getLevel());
+    }
+
+    @Test
+    public void canReduceHealth() {
+        hero.reduceHealth(20);
+        assertEquals(80, hero.getHealth());
     }
 }
