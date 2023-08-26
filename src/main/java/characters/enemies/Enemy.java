@@ -4,12 +4,12 @@ import characters.Character;
 
 public abstract class Enemy extends Character {
 
-    public Enemy(long health, int damage, int xp, int level) {
+    public Enemy(int health, int damage, int xp, int level) {
         super(health, damage, xp, level);
     }
 
     public void levelUp() {
-        long newHealth = getHealth() + (getHealth() / 5);
+        int newHealth = getHealth() + (getHealth() / 5);
         setHealth(newHealth);
 
         int newDamage = getDamage() + (getDamage() / 5);

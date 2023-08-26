@@ -9,7 +9,7 @@ public class Healer extends Hero {
 
     private HealingSpell spell;
 
-    public Healer(long health, int damage, int level) {
+    public Healer(int health, int damage, int level) {
         super(health, damage, level);
         this.spell = null;
     }

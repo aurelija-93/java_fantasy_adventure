@@ -9,7 +9,7 @@ public class Mage extends Hero {
 
     private CombatSpell spell;
 
-    public Mage(long health, int damage, int level) {
+    public Mage(int health, int damage, int level) {
         super(health, damage, level);
         this.spell = null;
     }

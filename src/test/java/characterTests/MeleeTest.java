@@ -53,6 +53,11 @@ public class MeleeTest {
     }
 
     @Test
+    public void maxHealthEqualsStartingHealth() {
+        assertEquals(melee.getHealth(), melee.getMaxHealth());
+    }
+
+    @Test
     public void canAddGold() {
         melee.addGold(50);
         assertEquals(150, melee.getGold());
@@ -99,6 +104,12 @@ public class MeleeTest {
     }
 
     @Test
+    public void cannotReduceHealthBelowZero() {
+        melee.reduceHealth(200);
+        assertEquals(0, melee.getHealth());
+    }
+
+    @Test
     public void canChangeWeapon() {
         Weapon weapon = new Weapon("Sword", 10);
         melee.addToInventory(weapon);
@@ -133,5 +144,19 @@ public class MeleeTest {
         melee.unequipWeapon();
         assertEquals("Fist", melee.getWeapon().getName());
         assertEquals(5, melee.getWeapon().getDamage());
+    }
+
+    @Test
+    public void canGetHealed() {
+        melee.reduceHealth(50);
+        melee.getHealed(30);
+        assertEquals(80, melee.getHealth());
+    }
+
+    @Test
+    public void cannotHealBeyondMaxHealth() {
+        melee.reduceHealth(50);
+        melee.getHealed(200);
+        assertEquals(100, melee.getHealth());
     }
 }

@@ -103,6 +103,12 @@ public class HealerTest {
     }
 
     @Test
+    public void cannotReduceHealthBelowZero() {
+        healer.reduceHealth(200);
+        assertEquals(0, healer.getHealth());
+    }
+
+    @Test
     public void canChangeSpell() {
         healer.addToInventory(spell);
         healer.changeSpell(spell);
@@ -122,5 +128,19 @@ public class HealerTest {
         healer.changeSpell(spell);
         healer.unequipSpell();
         assertNull(healer.getSpell());
+    }
+
+    @Test
+    public void canGetHealed() {
+        healer.reduceHealth(50);
+        healer.getHealed(30);
+        assertEquals(80, healer.getHealth());
+    }
+
+    @Test
+    public void cannotHealBeyondMaxHealth() {
+        healer.reduceHealth(50);
+        healer.getHealed(200);
+        assertEquals(100, healer.getHealth());
     }
 }

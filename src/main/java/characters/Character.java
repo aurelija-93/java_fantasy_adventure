@@ -1,19 +1,19 @@
 package characters;
 
 public abstract class Character implements ILevelUp {
-    private long health;
+    private int health;
     private int damage;
     private int xp;
     private int level;
 
-    public Character(long health, int damage, int xp, int level) {
+    public Character(int health, int damage, int xp, int level) {
         this.health = health;
         this.damage = damage;
         this.xp = xp;
         this.level = level;
     }
 
-    public long getHealth() {
+    public int getHealth() {
         return health;
     }
 
@@ -29,7 +29,7 @@ public abstract class Character implements ILevelUp {
         return level;
     }
 
-    public void setHealth(long health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
@@ -49,7 +49,7 @@ public abstract class Character implements ILevelUp {
         xp += points;
     }
 
-    public void reduceHealth(long amount) {
-        health -= amount;
+    public void reduceHealth(int amount) {
+        health = Math.max(health - amount, 0);
     }
 }

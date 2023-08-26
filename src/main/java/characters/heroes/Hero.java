@@ -6,20 +6,22 @@ import items.Item;
 import java.util.ArrayList;
 
 public abstract class Hero extends Character {
-    private long gold;
+    private int gold;
     private ArrayList<Item> inventory;
+    private int maxHealth;
 
     public Hero(
-            long health,
+            int health,
             int damage,
             int level
     ) {
         super(health, damage, 0, level);
         this.gold = 100;
         this.inventory = new ArrayList<>();
+        this.maxHealth = health;
     }
 
-    public long getGold() {
+    public int getGold() {
         return gold;
     }
 
@@ -27,7 +29,11 @@ public abstract class Hero extends Character {
         return inventory;
     }
 
-    public void addGold(long amount) {
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void addGold(int amount) {
         gold += amount;
     }
 
@@ -40,7 +46,7 @@ public abstract class Hero extends Character {
     }
 
     public void levelUp() {
-        long newHealth = getHealth() + (getHealth() / 5);
+        int newHealth = getHealth() + (getHealth() / 5);
         setHealth(newHealth);
 
         int newDamage = getDamage() + (getDamage() / 5);
@@ -49,5 +55,9 @@ public abstract class Hero extends Character {
         setXp(0);
 
         setLevel(getLevel() + 1);
+    }
+
+    public void getHealed(int healthPoints) {
+        setHealth(Math.min(getHealth() + healthPoints, getMaxHealth()));
     }
 }

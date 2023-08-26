@@ -102,6 +102,12 @@ public class MageTest {
     }
 
     @Test
+    public void cannotReduceHealthBelowZero() {
+        mage.reduceHealth(200);
+        assertEquals(0, mage.getHealth());
+    }
+
+    @Test
     public void canChangeSpell() {
         mage.addToInventory(spell);
         mage.changeSpell(spell);
@@ -121,5 +127,19 @@ public class MageTest {
         mage.changeSpell(spell);
         mage.unequipSpell();
         assertNull(mage.getSpell());
+    }
+
+    @Test
+    public void canGetHealed() {
+        mage.reduceHealth(50);
+        mage.getHealed(30);
+        assertEquals(80, mage.getHealth());
+    }
+
+    @Test
+    public void cannotHealBeyondMaxHealth() {
+        mage.reduceHealth(50);
+        mage.getHealed(200);
+        assertEquals(100, mage.getHealth());
     }
 }

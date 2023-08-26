@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Melee extends Hero {
     private Weapon weapon;
 
-    public Melee(long health, int damage, int level) {
+    public Melee(int health, int damage, int level) {
         super(health, damage, level);
         this.weapon = new Weapon("Fist", 2);
     }
